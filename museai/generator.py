@@ -1,34 +1,31 @@
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
+from transformers import pipeline
 
-# Load environment variables from .env file
-load_dotenv()
+# Supported models and their task types
+SUPPORTED_MODELS = {
+    "flan-t5": ("google/flan-t5-large", "text2text-generation"),
+    "bloomz": ("bigscience/bloomz", "text-generation"),
+    "mistral": ("mistralai/Mistral-7B-Instruct-v0.1", "text-generation")
+}
 
-# Initialize OpenAI client with API key
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-def generate_text(prompt, model="gpt-3.5-turbo"):
+def generate_text(prompt, model_key="flan-t5"):
     """
-    Generate creative text based on the input prompt using OpenAI's GPT model.
+    Generate text using Hugging Face Transformers locally.
 
     Args:
-        prompt (str): The input text prompt.
-        model (str): The OpenAI model to use (default: gpt-3.5-turbo).
+        prompt (str): The input prompt.
+        model_key (str): Key to select the model from SUPPORTED_MODELS.
 
     Returns:
-        str: Generated text output.
+        str: Generated text or error message.
     """
+    if model_key not in SUPPORTED_MODELS:
+        return f"[Error] Unsupported model key: {model_key}"
+
+    model_id, task = SUPPORTED_MODELS[model_key]
+
     try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant for creative writing."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=200,
-            temperature=0.8
-        )
-        return response.choices[0].message.content.strip()
+        pipe = pipeline(task, model=model_id)
+        result = pipe(prompt, max_length=200, do_sample=True)
+        return result[0].get("generated_text", "[Error] No output generated.")
     except Exception as e:
-        return f"[Error] Failed to generate text:\n\n{e}"
+        return f"[Error] Failed to generate text:\n\n{e._class.name_}: {e}"
