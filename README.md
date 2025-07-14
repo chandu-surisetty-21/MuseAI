@@ -1,7 +1,7 @@
 
 # MuseAI
 
-**MuseAI is an intelligent assistant designed to empower creative writers by leveraging the capabilities of advanced language models. Whether you're developing a novel, screenplay, or short story, MuseAI provides intelligent suggestions, narrative enhancements, and stylistic guidance to elevate your storytelling process.
+MuseAI is an intelligent assistant designed to empower creative writers by leveraging the capabilities of advanced language models. Whether you're developing a novel, screenplay, or short story, MuseAI provides intelligent suggestions, narrative enhancements, and stylistic guidance to elevate your storytelling process.
 
 ## ✨ Key Features
 
@@ -28,15 +28,16 @@
    git clone https://github.com/chandu-surisetty-21/MuseAI.git
    cd MuseAI
 
-2. **Install Dependencies**
+3. **Install Dependencies**
 
 	Ensure you have Python 3.10 or later installed. Then, install the required packages:
 
 	```bash```
 	```pip install -r requirements.txt```
+
 This will install the core dependencies including OpenAI, Hugging Face Transformers, and Streamlit.
 
-3. **Run the Demo**
+5. **Run the Demo**
 
 	```bash```
 	```pip install -r requirements.txt```
