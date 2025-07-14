@@ -1,14 +1,13 @@
-# This is a comment - Python ignores lines starting with #
-# Let's make our AI say hello!
+from museai.generator import generate_text
+from museai.utils import sanitize_input
 
-print("Hello, aspiring writer! Welcome to Muse AI.")
+def main():
+    print("🎨 Welcome to MuseAI - Your Creative Writing Assistant!")
+    prompt = input("Enter a writing prompt: ")
+    clean_prompt = sanitize_input(prompt)
+    result = generate_text(clean_prompt)
+    print("\n📝 MuseAI Response:\n")
+    print(result)
 
-# Variables are like containers for information
-user_name = input("What's your name? ") # input() gets text from the user
-
-# We can combine text using a plus sign (+)
-print("Nice to meet you, " + user_name + "!")
-
-# Let's make a simple creative prompt
-print("\nHere's your first creative spark:")
-print("Write a short story about a talking teacup who dreams of becoming a spaceship.")
+if __name__ == "__main__":
+    main()
