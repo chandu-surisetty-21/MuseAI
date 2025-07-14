@@ -30,7 +30,7 @@ MuseAI is an intelligent assistant designed to empower creative writers by lever
    
    cd MuseAI
 
-3. **Install Dependencies**
+2. **Install Dependencies**
 
 	Ensure you have Python 3.10 or later installed. Then, install the required packages:
 
@@ -39,7 +39,7 @@ MuseAI is an intelligent assistant designed to empower creative writers by lever
 
 This will install the core dependencies including OpenAI, Hugging Face Transformers, and Streamlit.
 
-5. **Run the Demo**
+3. **Run the Demo**
 
 	```bash```
 	```pip install -r requirements.txt```
