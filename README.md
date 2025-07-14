@@ -25,7 +25,9 @@ MuseAI is an intelligent assistant designed to empower creative writers by lever
 
 1. **Clone the repository**
    ```bash```
+   
    git clone https://github.com/chandu-surisetty-21/MuseAI.git
+   
    cd MuseAI
 
 3. **Install Dependencies**
